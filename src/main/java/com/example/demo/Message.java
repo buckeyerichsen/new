@@ -17,6 +17,9 @@ import javax.persistence.Id;
         private String content;
         private String date;
         private String sentby;
+        private String imageurl;
+
+
 
         public long getId() {
             return id;
@@ -49,4 +52,14 @@ import javax.persistence.Id;
         public void setSentby(String sentby) {
             this.sentby = sentby;
         }
-}
+
+
+
+       public void setUrl(String imageurl){
+            this.imageurl = imageurl;
+       }
+
+       public String getUrl(String imageurl){
+            return imageurl;
+       }
+    }

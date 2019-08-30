@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Message Form</h1>
-<form action="#" th:action="@{/process}" th:object="${message}" method="post">
+<form action="#" th:action="@{/process}" th:object="${message}" method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label >Content</label>
         <input type="text" th:field="*{content}" class="form-control" placeholder="Enter Content">
@@ -20,15 +20,19 @@
         <label >Sent By</label>
         <input type="text" th:field="*{sentby}" class="form-control" placeholder="Enter Sent By">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-    <div></div>
-    <br /><br/>
-    <h1>Picture upload</h1>
-    <form method="POST" action="/add" th:object="${message}"
-          enctype="multipart/form-data">
-        <input type="file" name="file" />br/><br/>
+    <div class="form-group">
+        <label >Picture Upload</label>
+        <input type="file" name="file" />
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+    <div></div>
+    <!--<br /><br/>-->
+    <!--<h1>Picture upload</h1>-->
+    <!--<form method="POST" action="/add" th:object="${message}"-->
+          <!--enctype="multipart/form-data">-->
+        <!--<input type="file" name="file" />br/><br/>-->
+    </div>
+    <!--<button type="submit" class="btn btn-primary">Submit</button>-->
 </form>
 </body>
 </html>

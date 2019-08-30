@@ -13,6 +13,7 @@
         <th>Content</th>
         <th>Date</th>
         <th>Sent By</th>
+        <th>Image</th>
     </tr>
     </thead>
     <tbody>
@@ -20,8 +21,12 @@
         <td>[[${message.content}]]</td>
         <td>[[${message.date}]]</td>
         <td>[[${message.sentby}]]</td>
-        <img th:src="${message.}" /><hr />
+
+        <td>
+            <div th:if="${message.imageurl} != null">
+            <img th:src="${message.imageurl}" />
         </div>
+        </td>
     </tr>
     </tbody>
 </table>

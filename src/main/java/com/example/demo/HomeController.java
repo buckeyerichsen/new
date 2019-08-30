@@ -29,6 +29,9 @@ public class HomeController {
     @Autowired
     MessageRepository messageRepository;
 
+    @Autowired
+    CloudinaryConfig cloudc;
+
     @RequestMapping("/")
     public String listMessages(Model model) {
         model.addAttribute("messages", messageRepository.findAll());
@@ -42,30 +45,24 @@ public class HomeController {
     }
 
     @PostMapping("/process")
-    public String processForm(@Valid Message message, BindingResult result) {
+    public String processForm(@Valid Message message, @RequestParam("file")MultipartFile file, BindingResult result) {
         if (result.hasErrors()) {
             return "messageform";
         }
+        if (file.isEmpty()) {
+
+        }else{
+            try {
+                Map uploadResult = cloudc.upload(file.getBytes(),
+                        ObjectUtils.asMap("resourcetype" , "auto"));
+                message.setUrl(uploadResult.get("url").toString());
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
         messageRepository.save(message);
         return "redirect:/";
-//    }
-//
-//    @PostMapping("/add")
-//    public String processActor(@ModelAttribute Message message,
-//                               @RequestParam("file")MultipartFile file){
-//        if (file.isEmpty()){
-//            return "redirect:/add";
-//        }
-//        try {
-//            Map uploadResult = cloudc.upload(file.getBytes(),
-//                    ObjectUtils.asMap("resourcetype", "auto"));
-//            message.setHeadshot(uploadResult.get("url").toString());
-//            messageRepository.save(message);
-//        } catch (IOException e){
-//            e.printStackTrace();
-//            return "redirect:/add";
-//        }
-//        return "redirect:/";
+
     }
 
 }
