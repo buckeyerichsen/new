@@ -26,6 +26,8 @@ import java.util.Map;
 @Controller
 public class HomeController {
 
+
+
     @Autowired
     MessageRepository messageRepository;
 
@@ -49,13 +51,11 @@ public class HomeController {
         if (result.hasErrors()) {
             return "messageform";
         }
-        if (file.isEmpty()) {
-
-        }else{
+        if (!file.isEmpty()) {
             try {
-                Map uploadResult = cloudc.upload(file.getBytes(),
-                        ObjectUtils.asMap("resourcetype" , "auto"));
+                Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype" , "auto"));
                 message.setUrl(uploadResult.get("url").toString());
+
             } catch (IOException e){
                 e.printStackTrace();
             }

@@ -30,13 +30,15 @@
     </tr>
     </tbody>
 </table>
-    <body>
-    <a href="/add">Add an image</a>
-        <body th:each="message : ${message}">
-            <div th:if="${message.headshot} != null">
-                <img th:src="${message.headshot}" /><hr />
-            </div>
-        </body>
+    <!--<body>-->
+    <!--&lt;!&ndash;<a href="/add">Add an image</a>&ndash;&gt;-->
+        <!--<body th:each="message : ${messages}">-->
+            <!--<div th:if="${message.imageurl} != null">-->
+                <!--<img th:src="${message.imageurl}" /><hr />-->
+            <!--</div>-->
+        <!--</body>-->
+    <!--<body>-->
 <a href="/add">Add a Message</a><br />
-</body>
+    </body>
+
 </html>
