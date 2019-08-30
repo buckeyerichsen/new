@@ -47,10 +47,7 @@ public class HomeController {
     }
 
     @PostMapping("/process")
-    public String processForm(@Valid Message message, @RequestParam("file")MultipartFile file, BindingResult result) {
-        if (result.hasErrors()) {
-            return "messageform";
-        }
+    public String processForm(@ModelAttribute Message message, @RequestParam("file")MultipartFile file) {
         if (!file.isEmpty()) {
             try {
                 Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype" , "auto"));

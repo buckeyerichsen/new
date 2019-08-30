@@ -59,7 +59,7 @@ import javax.persistence.Id;
             this.imageurl = imageurl;
        }
 
-       public String getUrl(String imageurl){
+       public String getUrl(){
             return imageurl;
        }
     }

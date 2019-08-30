@@ -23,8 +23,9 @@
         <td>[[${message.sentby}]]</td>
 
         <td>
-            <div th:if="${message.imageurl} != null">
-            <img th:src="${message.imageurl}" />
+            <!--<div th:each="message : ${messages}">-->
+             <div th:if="${message.imageurl} != null">
+                <img th:src="${message.imageurl}" />
         </div>
         </td>
     </tr>
