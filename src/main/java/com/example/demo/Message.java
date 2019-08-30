@@ -17,7 +17,7 @@ import javax.persistence.Id;
         private String content;
         private String date;
         private String sentby;
-        private String imageurl;
+        public String imageurl;
 
 
 
